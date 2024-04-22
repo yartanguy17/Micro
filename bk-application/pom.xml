@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://maven.apache.org/POM/4.0.0"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <artifactId>bk-application</artifactId>
+  <dependencies>
+    <dependency>
+      <artifactId>bk-commons</artifactId>
+      <groupId>com.plethoria</groupId>
+      <version>${revision}</version>
+    </dependency>
+
+    <dependency>
+      <artifactId>bk-config-client</artifactId>
+      <groupId>com.plethoria</groupId>
+      <version>${revision}</version>
+    </dependency>
+    <dependency>
+      <artifactId>bk-email-services</artifactId>
+      <groupId>com.plethoria</groupId>
+      <version>${revision}</version>
+    </dependency>
+    <dependency>
+      <artifactId>spring-boot-autoconfigure</artifactId>
+      <groupId>org.springframework.boot</groupId>
+    </dependency>
+
+    <dependency>
+      <artifactId>spring-boot-starter-web</artifactId>
+      <exclusions>
+        <exclusion>
+          <artifactId>spring-boot-starter-logging</artifactId>
+          <groupId>org.springframework.boot</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>snakeyaml</artifactId>
+          <groupId>org.yaml</groupId>
+        </exclusion>
+      </exclusions>
+      <groupId>org.springframework.boot</groupId>
+    </dependency>
+  </dependencies>
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <artifactId>butterknife</artifactId>
+    <groupId>com.plethoria</groupId>
+    <version>${revision}</version>
+  </parent>
+  <properties>
+    <spring-boot.repackage.skip>false</spring-boot.repackage.skip>
+  </properties>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <configuration>
+          <destFile>${project.basedir}/coverage/jacoco.exec</destFile>
+          <append>true</append>
+        </configuration>
+        <executions>
+          <execution>
+            <id>report</id>
+            <phase>prepare-package</phase>
+            <goals>
+              <goal>report-aggregate</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+</project>

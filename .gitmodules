@@ -1,0 +1,3 @@
+[submodule "bk-config"]
+	path = bk-config
+	url = https://github.com/Playthora/butterknife-config
